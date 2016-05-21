@@ -16,7 +16,7 @@ export default class App extends Component {
 	render() {
 		return (
 			<div>
-				<JustGage value={this.state.value}  width={400} height={320} />
+				<JustGage value={this.state.value} width={400} height={320} label="" />
 				<div>
 					<input style={{ width: 400 }}type="range" min="0" max="100" value={this.state.value} onChange={this.onChange} />
 				</div>
