@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Gauge from '..';
+import Gauge from '../src/Gauge';
 
 export default class App extends Component {
 	constructor() {
