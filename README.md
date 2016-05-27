@@ -1,12 +1,14 @@
 React SVG Gauge
 =====
 
-Simple SVG Gauge component, inspired by [JustGage](JustGage.com)
+Simple SVG Gauge component, inspired by [JustGage](http://JustGage.com)
 
 Demo
 ----
 
-http://reggino.github.io/react-svg-gauge
+[Sample Gauge](https://reggino.github.io/react-svg-gauge/art.png)
+
+https://reggino.github.io/react-svg-gauge
  
  
 Sample implementation
