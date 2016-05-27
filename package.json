@@ -1,34 +1,42 @@
 {
-  "name": "react-justgage",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
+  "name": "react-svg-gauge",
+  "version": "0.0.1",
+  "description": "Justgage inspired .svg gauge for React",
+  "author": "Tim de Koning",
+  "user": "Reggino",
+  "main": "lib/Gauge.js",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.9.0",
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
     "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-class-properties": "^6.9.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",
     "eslint": "^2.10.2",
     "eslint-plugin-react": "^5.1.1",
-    "gulp": "^3.9.1",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^1.5.3",
     "react-hot-loader": "^1.3.0",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1",
-    "webpack-stream": "^3.2.0"
+    "webpack-dev-server": "^1.14.1"
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": "^15.1.0",
     "react-dom": "^15.1.0"
-  }
+  },
+  "scripts": {
+    "example": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --content-base example/ --config ./example/webpack.example.config.js",
+    "gh-pages": "./node_modules/webpack/bin/webpack.js --content-base example/ --config ./example/webpack.example.config.js; cp ./example/index.html /tmp/index.html; cp ./example/bundle.js /tmp/bundle.js; git checkout gh-pages; cp /tmp/index.html ./index.html; cp /tmp/bundle.js ./bundle.js; chmod -x .git/hooks/pre-commit .git/hooks/post-commit; git commit -a -m 'Automatic Example Update'; git push origin gh-pages; chmod +x .git/hooks/pre-commit .git/hooks/post-commit; git checkout master;",
+    "build": "./node_modules/babel-cli/bin/babel.js ./src --plugins add-module-exports --out-dir ./lib;"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Reggino/react-svg-gauge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Reggino/react-svg-gauge/issues"
+  },
+  "homepage": "https://github.com/Reggino/react-svg-gauge#readme"
 }

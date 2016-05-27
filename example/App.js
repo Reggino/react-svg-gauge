@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import JustGage from './JustGage';
+import Gauge from '..';
 
 export default class App extends Component {
 	constructor() {
@@ -16,10 +16,11 @@ export default class App extends Component {
 	render() {
 		return (
 			<div>
-				<JustGage value={this.state.value} width={400} height={320} label="" />
+				<Gauge value={this.state.value} width={400} height={320} label="This is a big one" />
 				<div>
 					<input style={{ width: 400 }}type="range" min="0" max="100" value={this.state.value} onChange={this.onChange} />
 				</div>
+				<Gauge value={this.state.value} width={200} height={160} label="This is a smaller one" color="#123456" />
 			</div>
 		);
 	}
