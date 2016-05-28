@@ -6,6 +6,7 @@
   "user": "Reggino",
   "main": "lib/Gauge.js",
   "license": "MIT",
+  "keywords": ["react-component", "react", "svg", "gauge"],
   "devDependencies": {
     "babel-core": "^6.9.0",
     "babel-eslint": "^6.0.4",
