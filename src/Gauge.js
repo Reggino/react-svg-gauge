@@ -9,6 +9,7 @@ export default class Gauge extends Component {
 		width: 400,
 		height: 320,
 		color: '#fe0400',
+		backgroundColor: "#edebeb",
 		topLabelStyle: {textAnchor: "middle", fill:"#999999", stroke: "none", fontStyle: "normal",fontVariant: "normal", fontWeight: 'bold', fontStretch: 'normal', lineHeight: 'normal', fillOpacity: 1},
 		valueLabelStyle: {textAnchor: "middle",  fill:"#010101", stroke: "none", fontStyle: "normal", fontVariant: "normal", fontWeight: 'bold', fontStretch: 'normal', lineHeight: 'normal', fillOpacity: 1},
 		minMaxLabelStyle: {textAnchor: "middle", fill:"#999999", stroke: "none", fontStyle: "normal",fontVariant: "normal", fontWeight: 'normal', fontStretch: 'normal', fontSize: 20, lineHeight: 'normal', fillOpacity: 1}
@@ -71,19 +72,19 @@ export default class Gauge extends Component {
 							<feComposite operator="over" in="shadow" in2="SourceGraphic" />
 						</filter>
 					</defs>
-					<path fill="#edebeb" stroke="none" d={this._getPath(this.props.max)} filter="url(#g3-inner-shadow)" />
+					<path fill={this.props.backgroundColor} stroke="none" d={this._getPath(this.props.max)} filter="url(#g3-inner-shadow)" />
 					<path fill={this.props.color} stroke="none" d={this._getPath(this.props.value)} filter="url(#g3-inner-shadow)" />
 					<text x={this.props.width / 2} y={this.props.height / 8} text-anchor="middle" style={topLabelStyle}>
-						<tspan dy="11.012019230769234">{ this.props.label }</tspan>
+						{ this.props.label }
 					</text>
-					<text x={this.props.width / 2} y={this.props.height / 4 * 3} text-anchor="middle" style={valueLabelStyle}>
-						<tspan dy="17.008928571428584">{ this.props.value }</tspan>
+					<text x={this.props.width / 2} y={this.props.height / 5 * 4} text-anchor="middle" style={valueLabelStyle}>
+						{ this.props.value }
 					</text>
-					<text x={((Cx - Ro) +  (Cx - Ri)) / 2} y={Cy + 20} text-anchor="middle" style={this.props.minMaxLabelStyle}>
-						<tspan dy="6.999999999999943">{this.props.min}</tspan>
+					<text x={((Cx - Ro) +  (Cx - Ri)) / 2} y={Cy + 25} text-anchor="middle" style={this.props.minMaxLabelStyle}>
+						{this.props.min}
 					</text>
-					<text x={(Xo + Xi)/2} y={Cy + 20}  text-anchor="middle"  style={this.props.minMaxLabelStyle}>
-						<tspan dy="6.999999999999943">{this.props.max}</tspan>
+					<text x={(Xo + Xi)/2} y={Cy + 25}  text-anchor="middle"  style={this.props.minMaxLabelStyle}>
+						{this.props.max}
 					</text>
 				</svg>
 		);

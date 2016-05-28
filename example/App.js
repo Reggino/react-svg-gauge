@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import Gauge from '../src/Gauge';
 
+function getHexColor(value) {
+	var string = value.toString(16);
+	return (string.length === 1) ? '0' + string : string;
+}
+
 export default class App extends Component {
 	constructor() {
 		super();
@@ -14,6 +19,11 @@ export default class App extends Component {
 	};
 
 	render() {
+		var r = Math.floor(this.state.value * 2.55);
+		var g = Math.floor(255 - (this.state.value * 2.55));
+		var b = 0;
+		var colorHex = '#' + getHexColor(r)  + getHexColor(g)  + getHexColor(b) ;
+
 		return (
 			<div className="container">
 				<div className="row">
@@ -36,7 +46,7 @@ export default class App extends Component {
 				</div>
 				<div className="row">
 					<div className="col-sm-6">
-						<Gauge value={this.state.value} width={400} height={320} label="This is a big one" />
+						<Gauge value={this.state.value} width={400} height={320} color={colorHex} label="This is a big one" />
 					</div>
 					<div className="col-sm-6">
 						<Gauge value={this.state.value} width={200} height={160} label="This is a smaller one" color="#123456" />
