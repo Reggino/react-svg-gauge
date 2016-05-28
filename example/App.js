@@ -15,12 +15,38 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<div>
-				<Gauge value={this.state.value} width={400} height={320} label="This is a big one" />
-				<div>
-					<input style={{ width: 400 }}type="range" min="0" max="100" value={this.state.value} onChange={this.onChange} />
+			<div className="container">
+				<div className="row">
+					<div className="col-xs-12">
+						<h1>React-Svg-Gauge</h1>
+					</div>
 				</div>
-				<Gauge value={this.state.value} width={200} height={160} label="This is a smaller one" color="#123456" />
+				<div className="row">
+					<div className="col-xs-12">
+						<nav className="navbar navbar-default">
+							<div className="container">
+								<ul className="nav nav-pills navbar-nav">
+									<li role="presentation" className=""><a href="https://github.com/reggino/react-svg-gauge/blob/master/example/App.js">Example Source</a></li>
+									<li role="presentation" className=""><a href="https://github.com/reggino/react-svg-gauge">Documentation on Github</a></li>
+									<li role="presentation" className=""><a href="https://www.npmjs.com/package/react-svg-gauge">NPM Package</a></li>
+								</ul>
+							</div>
+						</nav>
+					</div>
+				</div>
+				<div className="row">
+					<div className="col-sm-6">
+						<Gauge value={this.state.value} width={400} height={320} label="This is a big one" />
+					</div>
+					<div className="col-sm-6">
+						<Gauge value={this.state.value} width={200} height={160} label="This is a smaller one" color="#123456" />
+					</div>
+				</div>
+				<div className="row">
+					<div className="col-sm-12">
+						<input style={{ width: 400 }}type="range" min="0" max="100" value={this.state.value} onChange={this.onChange} />
+					</div>
+				</div>
 			</div>
 		);
 	}
