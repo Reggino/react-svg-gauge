@@ -11,7 +11,7 @@ export default class Gauge extends Component {
 		color: '#fe0400',
 		backgroundColor: "#edebeb",
 		topLabelStyle: {textAnchor: "middle", fill:"#999999", stroke: "none", fontStyle: "normal",fontVariant: "normal", fontWeight: 'bold', fontStretch: 'normal', lineHeight: 'normal', fillOpacity: 1},
-		valueLabelStyle: {textAnchor: "middle",  fill:"#010101", stroke: "none", fontStyle: "normal", fontVariant: "normal", fontWeight: 'bold', fontStretch: 'normal', lineHeight: 'normal', fillOpacity: 1},
+		valueLabelStyle: {textAnchor: "middle", fill:"#010101", stroke: "none", fontStyle: "normal", fontVariant: "normal", fontWeight: 'bold', fontStretch: 'normal', lineHeight: 'normal', fillOpacity: 1},
 		minMaxLabelStyle: {textAnchor: "middle", fill:"#999999", stroke: "none", fontStyle: "normal",fontVariant: "normal", fontWeight: 'normal', fontStretch: 'normal', fontSize: 20, lineHeight: 'normal', fillOpacity: 1}
 	};
 
@@ -67,23 +67,23 @@ export default class Gauge extends Component {
 							<feOffset dx="0" dy="3" />
 							<feGaussianBlur result="offset-blur" stdDeviation="5" />
 							<feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse" />
-							<feFlood flood-color="black" flood-opacity="0.2" result="color" />
+							<feFlood floodColor="black" floodOpacity="0.2" result="color" />
 							<feComposite operator="in" in="color" in2="inverse" result="shadow" />
 							<feComposite operator="over" in="shadow" in2="SourceGraphic" />
 						</filter>
 					</defs>
 					<path fill={this.props.backgroundColor} stroke="none" d={this._getPath(this.props.max)} filter="url(#g3-inner-shadow)" />
 					<path fill={this.props.color} stroke="none" d={this._getPath(this.props.value)} filter="url(#g3-inner-shadow)" />
-					<text x={this.props.width / 2} y={this.props.height / 8} text-anchor="middle" style={topLabelStyle}>
+					<text x={this.props.width / 2} y={this.props.height / 8} textAnchor="middle" style={topLabelStyle}>
 						{ this.props.label }
 					</text>
-					<text x={this.props.width / 2} y={this.props.height / 5 * 4} text-anchor="middle" style={valueLabelStyle}>
+					<text x={this.props.width / 2} y={this.props.height / 5 * 4} textAnchor="middle" style={valueLabelStyle}>
 						{ this.props.value }
 					</text>
-					<text x={((Cx - Ro) +  (Cx - Ri)) / 2} y={Cy + 25} text-anchor="middle" style={this.props.minMaxLabelStyle}>
+					<text x={((Cx - Ro) + (Cx - Ri)) / 2} y={Cy + 25} textAnchor="middle" style={this.props.minMaxLabelStyle}>
 						{this.props.min}
 					</text>
-					<text x={(Xo + Xi)/2} y={Cy + 25}  text-anchor="middle"  style={this.props.minMaxLabelStyle}>
+					<text x={(Xo + Xi)/2} y={Cy + 25} textAnchor="middle" style={this.props.minMaxLabelStyle}>
 						{this.props.max}
 					</text>
 				</svg>
