@@ -1,13 +1,19 @@
 {
   "name": "react-svg-gauge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Justgage inspired .svg gauge for React",
   "author": "Tim de Koning",
   "user": "Reggino",
   "main": "lib/Gauge.js",
   "license": "MIT",
-  "keywords": ["react-component", "react", "svg", "gauge"],
+  "keywords": [
+    "react-component",
+    "react",
+    "svg",
+    "gauge"
+  ],
   "devDependencies": {
+    "babel-cli": "^6.11.4",
     "babel-core": "^6.9.0",
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
@@ -30,7 +36,8 @@
   "scripts": {
     "example": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --content-base example/ --config ./example/webpack.example.config.js",
     "gh-pages": "./node_modules/webpack/bin/webpack.js --content-base example/ --config ./example/webpack.example.config.js; cp ./example/index.html /tmp/index.html; cp ./example/bundle.js /tmp/bundle.js; git checkout gh-pages; cp /tmp/index.html ./index.html; cp /tmp/bundle.js ./bundle.js; git commit -a -m 'Automatic Example Update'; git push origin gh-pages; git checkout master;",
-    "build": "./node_modules/babel-cli/bin/babel.js ./src --plugins add-module-exports --out-dir ./lib;"
+    "build": "./node_modules/babel-cli/bin/babel.js ./src --plugins add-module-exports --out-dir ./lib",
+    "prepublish": "./node_modules/babel-cli/bin/babel.js ./src --plugins add-module-exports --out-dir ./lib"
   },
   "repository": {
     "type": "git",
