@@ -1,6 +1,6 @@
 {
   "name": "react-svg-gauge",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Justgage inspired .svg gauge for React",
   "author": "Tim de Koning",
   "user": "Reggino",
@@ -34,10 +34,10 @@
     "react-dom": "^15.1.0"
   },
   "scripts": {
-    "example": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --content-base example/ --config ./example/webpack.example.config.js",
-    "gh-pages": "./node_modules/webpack/bin/webpack.js --content-base example/ --config ./example/webpack.example.config.js; cp ./example/index.html /tmp/index.html; cp ./example/bundle.js /tmp/bundle.js; git checkout gh-pages; cp /tmp/index.html ./index.html; cp /tmp/bundle.js ./bundle.js; git commit -a -m 'Automatic Example Update'; git push origin gh-pages; git checkout master;",
-    "build": "./node_modules/babel-cli/bin/babel.js ./src --plugins add-module-exports --out-dir ./lib",
-    "prepublish": "./node_modules/babel-cli/bin/babel.js ./src --plugins add-module-exports --out-dir ./lib"
+    "example": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --content-base example/ --config ./example/webpack.example.config.js",
+    "gh-pages": "node ./node_modules/webpack/bin/webpack.js --content-base example/ --config ./example/webpack.example.config.js; cp ./example/index.html /tmp/index.html; cp ./example/bundle.js /tmp/bundle.js; git checkout gh-pages; cp /tmp/index.html ./index.html; cp /tmp/bundle.js ./bundle.js; git commit -a -m 'Automatic Example Update'; git push origin gh-pages; git checkout master;",
+    "build": "node ./node_modules/babel-cli/bin/babel.js ./src --plugins add-module-exports --out-dir ./lib",
+    "prepublish": "node ./node_modules/babel-cli/bin/babel.js ./src --plugins add-module-exports --out-dir ./lib"
   },
   "repository": {
     "type": "git",
