@@ -16,6 +16,9 @@ export default class Gauge extends Component {
 	};
 
 	_getPathValues = (value) => {
+		if (value < this.props.min) value = this.props.min;
+		if (value > this.props.max) value = this.props.max;
+
 		var dx = 0;
 		var dy = 0;
 		var gws = 1;
