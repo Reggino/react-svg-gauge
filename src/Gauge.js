@@ -9,6 +9,7 @@ export default class Gauge extends Component {
 		width: 400,
 		height: 320,
 		color: '#fe0400',
+		symbol: '',
 		backgroundColor: "#edebeb",
 		topLabelStyle: {textAnchor: "middle", fill:"#999999", stroke: "none", fontStyle: "normal",fontVariant: "normal", fontWeight: 'bold', fontStretch: 'normal', lineHeight: 'normal', fillOpacity: 1},
 		valueLabelStyle: {textAnchor: "middle", fill:"#010101", stroke: "none", fontStyle: "normal", fontVariant: "normal", fontWeight: 'bold', fontStretch: 'normal', lineHeight: 'normal', fillOpacity: 1},
@@ -81,7 +82,7 @@ export default class Gauge extends Component {
 						{ this.props.label }
 					</text>
 					<text x={this.props.width / 2} y={this.props.height / 5 * 4} textAnchor="middle" style={valueLabelStyle}>
-						{ this.props.value }
+						{ this.props.value + this.props.symbol  }
 					</text>
 					<text x={((Cx - Ro) + (Cx - Ri)) / 2} y={Cy + 25} textAnchor="middle" style={this.props.minMaxLabelStyle}>
 						{this.props.min}
