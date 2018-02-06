@@ -1,5 +1,4 @@
-var webpack = require("webpack");
-var path = require("path");
+const path = require("path");
 
 module.exports = {
 	entry: {
@@ -10,7 +9,7 @@ module.exports = {
 		filename: 'bundle.js'
 	},
 	resolve: {
-		extensions: ['', '.js', '.jsx']
+		extensions: ['.js', '.jsx']
 	},
 	module: {
 		loaders: [
