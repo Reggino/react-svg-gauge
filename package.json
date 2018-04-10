@@ -44,7 +44,7 @@
     "example": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --mode=development --content-base example/ --config ./example/webpack.example.config.js",
     "gh-pages": "node ./node_modules/webpack/bin/webpack.js --content-base example/ --config ./example/webpack.example.config.js; cp ./example/index.html /tmp/index.html; cp ./example/bundle.js /tmp/bundle.js; git checkout gh-pages; cp /tmp/index.html ./index.html; cp /tmp/bundle.js ./bundle.js; git commit -a -m 'Automatic Example Update'; git push origin gh-pages; git checkout master;",
     "build": "./node_modules/.bin/tsc --jsx react --esModuleInterop --outdir lib/ --declaration ./src/Gauge.tsx",
-    "prepublish": "./node_modules/.bin/tsc --jsx react --esModuleInterop --outdir lib/ --declaration ./src/Gauge.tsx"
+    "prepublishOnly": "./node_modules/.bin/tsc --jsx react --esModuleInterop --outdir lib/ --declaration ./src/Gauge.tsx"
   },
   "repository": {
     "type": "git",
