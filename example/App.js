@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Gauge from '../src/Gauge';
 
 function getHexColor(value) {
-	var string = value.toString(16);
+	let string = value.toString(16);
 	return (string.length === 1) ? '0' + string : string;
 }
 
@@ -10,7 +10,7 @@ export default class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			value: 50
+			value: 50,
 		}
 	}
 
@@ -19,10 +19,10 @@ export default class App extends Component {
 	};
 
 	render() {
-		var r = Math.floor(this.state.value * 2.55);
-		var g = Math.floor(255 - (this.state.value * 2.55));
-		var b = 0;
-		var colorHex = '#' + getHexColor(r)  + getHexColor(g)  + getHexColor(b) ;
+		let r = Math.floor(this.state.value * 2.55);
+		let g = Math.floor(255 - (this.state.value * 2.55));
+		let b = 0;
+		let colorHex = '#' + getHexColor(r)  + getHexColor(g)  + getHexColor(b) ;
 
 		return (
 			<div className="container">

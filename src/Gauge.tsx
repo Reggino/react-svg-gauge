@@ -1,9 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 //global unique key for every gauge (needed for SVG groups to stay separated)
-var uniqueId = 0;
+let uniqueId = 0;
 
-export default class Gauge extends Component {
+export interface GaugeProps {
+  label: string,
+  min: number,
+  max: number,
+  value: number,
+  width: number,
+  height: number,
+  color: string,
+  symbol: string,
+  backgroundColor: string,
+  topLabelStyle: React.CSSProperties,
+  valueLabelStyle: React.CSSProperties,
+  minMaxLabelStyle: React.CSSProperties
+}
+
+export default class Gauge extends React.Component<GaugeProps> {
 	static defaultProps = {
 		label: "React SVG Gauge",
 		min: 0,
@@ -19,37 +34,32 @@ export default class Gauge extends Component {
 		minMaxLabelStyle: {textAnchor: "middle", fill:"#999999", stroke: "none", fontStyle: "normal",fontVariant: "normal", fontWeight: 'normal', fontStretch: 'normal', fontSize: 20, lineHeight: 'normal', fillOpacity: 1}
 	};
 
-	_getPathValues = (value) => {
+	_getPathValues = (value:number) => {
 		if (value < this.props.min) value = this.props.min;
 		if (value > this.props.max) value = this.props.max;
 
-		var dx = 0;
-		var dy = 0;
-		var gws = 1;
+		let dx = 0;
+		let dy = 0;
 
-		var alpha = (1 - (value - this.props.min) / (this.props.max - this.props.min)) * Math.PI;
-		var Ro = this.props.width / 2 - this.props.width / 10;
-		var Ri = Ro - this.props.width / 6.666666666666667;
+		let alpha = (1 - (value - this.props.min) / (this.props.max - this.props.min)) * Math.PI;
+		let Ro = this.props.width / 2 - this.props.width / 10;
+		let Ri = Ro - this.props.width / 6.666666666666667;
 
-		var Cx = this.props.width / 2 + dx;
-		var Cy = this.props.height / 1.25 + dy;
+		let Cx = this.props.width / 2 + dx;
+		let Cy = this.props.height / 1.25 + dy;
 
-		var Xo = this.props.width / 2 + dx + Ro * Math.cos(alpha);
-		var Yo = this.props.height - (this.props.height - Cy) - Ro * Math.sin(alpha);
-		var Xi = this.props.width / 2 + dx + Ri * Math.cos(alpha);
-		var Yi = this.props.height - (this.props.height - Cy) - Ri * Math.sin(alpha);
+		let Xo = this.props.width / 2 + dx + Ro * Math.cos(alpha);
+		let Yo = this.props.height - (this.props.height - Cy) - Ro * Math.sin(alpha);
+		let Xi = this.props.width / 2 + dx + Ri * Math.cos(alpha);
+		let Yi = this.props.height - (this.props.height - Cy) - Ri * Math.sin(alpha);
 
 		return { alpha, Ro, Ri, Cx, Cy, Xo, Yo, Xi, Yi };
 	};
 
-	_getPath = (value) => {
-		var dx = 0;
-		var dy = 0;
-		var gws = 1;
+	_getPath = (value:number) => {
+		let { Ro, Ri, Cx, Cy, Xo, Yo, Xi, Yi } = this._getPathValues(value);
 
-		var { alpha, Ro, Ri, Cx, Cy, Xo, Yo, Xi, Yi } = this._getPathValues(value);
-
-		var path = "M" + (Cx - Ri) + "," + Cy + " ";
+		let path = "M" + (Cx - Ri) + "," + Cy + " ";
 		path += "L" + (Cx - Ro) + "," + Cy + " ";
 		path += "A" + Ro + "," + Ro + " 0 0 1 " + Xo + "," + Yo + " ";
 		path += "L" + Xi + "," + Yi + " ";
@@ -59,14 +69,16 @@ export default class Gauge extends Component {
 		return path;
 	};
 
+  private uniqueFilterId:string;
+
 	render() {
-		var topLabelStyle = (this.props.topLabelStyle.fontSize
+		let topLabelStyle = (this.props.topLabelStyle.fontSize
 				? this.props.topLabelStyle
 				: {...this.props.topLabelStyle, fontSize: (this.props.width / 10) });
-		var valueLabelStyle = (this.props.valueLabelStyle.fontSize
+		let valueLabelStyle = (this.props.valueLabelStyle.fontSize
 				? this.props.valueLabelStyle
 				: {...this.props.valueLabelStyle, fontSize: (this.props.width / 5) });
-		var { Cx, Ro, Ri, Xo, Cy, Xi } = this._getPathValues(this.props.max);
+		let { Cx, Ro, Ri, Xo, Cy, Xi } = this._getPathValues(this.props.max);
 		if(!this.uniqueFilterId) this.uniqueFilterId = "filter_"+ uniqueId++;
 		return (
 				<svg height="100%" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg" style={{width: this.props.width, height: this.props.height, overflow: 'hidden', position: 'relative', left: 0, top: 0}}>
