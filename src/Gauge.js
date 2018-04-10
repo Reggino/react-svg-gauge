@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+//global unique key for every gauge (needed for SVG groups to stay separated)
+var uniqueId = 0;
+
 export default class Gauge extends Component {
 	static defaultProps = {
 		label: "React SVG Gauge",
@@ -64,10 +67,11 @@ export default class Gauge extends Component {
 				? this.props.valueLabelStyle
 				: {...this.props.valueLabelStyle, fontSize: (this.props.width / 5) });
 		var { Cx, Ro, Ri, Xo, Cy, Xi } = this._getPathValues(this.props.max);
+		if(!this.uniqueFilterId) this.uniqueFilterId = "filter_"+ uniqueId++;
 		return (
 				<svg height="100%" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg" style={{width: this.props.width, height: this.props.height, overflow: 'hidden', position: 'relative', left: 0, top: 0}}>
 					<defs>
-						<filter id="g3-inner-shadow">
+						<filter id={this.uniqueFilterId}>
 							<feOffset dx="0" dy="3" />
 							<feGaussianBlur result="offset-blur" stdDeviation="5" />
 							<feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse" />
@@ -76,8 +80,8 @@ export default class Gauge extends Component {
 							<feComposite operator="over" in="shadow" in2="SourceGraphic" />
 						</filter>
 					</defs>
-					<path fill={this.props.backgroundColor} stroke="none" d={this._getPath(this.props.max)} filter="url(#g3-inner-shadow)" />
-					<path fill={this.props.color} stroke="none" d={this._getPath(this.props.value)} filter="url(#g3-inner-shadow)" />
+					<path fill={this.props.backgroundColor} stroke="none" d={this._getPath(this.props.max)} filter={"url(#" + this.uniqueFilterId + ")"} />
+					<path fill={this.props.color} stroke="none" d={this._getPath(this.props.value)} filter={"url(#" + this.uniqueFilterId + ")"} />
 					<text x={this.props.width / 2} y={this.props.height / 8} textAnchor="middle" style={topLabelStyle}>
 						{ this.props.label }
 					</text>
