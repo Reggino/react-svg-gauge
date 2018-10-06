@@ -57,10 +57,33 @@ export default class App extends Component<AppProps, AppState> {
         </div>
         <div className="row">
           <div className="col-sm-6">
-            <Gauge value={this.state.value} width={400} height={320} color={colorHex} label="This is a big one" symbol="%" />
+            <Gauge value={this.state.value} width={400} height={320} color={colorHex} label="This is a big one" valueFormatter={value => `${value}%`} />
           </div>
           <div className="col-sm-6">
-            <Gauge value={this.state.value} width={200} height={160} label="This is a smaller one" color="#123456" />
+            <div>
+              <Gauge value={this.state.value} width={200} height={160} label="This is a smaller one" color="#123456" />
+            </div>
+            <hr />
+            <div>
+              <Gauge
+                value={this.state.value}
+                width={200}
+                height={160}
+                label="Custom label format"
+                valueFormatter={value => {
+                  if (value > 80) {
+                    return '😁';
+                  }
+
+                  if (value > 20) {
+                    return '😒';
+                  }
+
+                  return '😣';
+                }
+
+              } />
+            </div>
           </div>
         </div>
         <div className="row">
