@@ -46,6 +46,7 @@ Options
 - topLabelStyle (style object)
 - valueLabelStyle (style object)
 - minMaxLabelStyle (style object)
-- symbol (e.g. '%')
+- valueFormatter (function)
+
 
 Styling can be done via `Style`-properties, or by applying CSS to SVG Text elements.

@@ -4,18 +4,18 @@ import React from 'react';
 let uniqueId = 0;
 
 export interface GaugeProps {
-  label: string,
-  min: number,
-  max: number,
-  value: number,
-  width: number,
-  height: number,
-  color: string,
-  symbol: string,
-  backgroundColor: string,
-  topLabelStyle: any,
-  valueLabelStyle: any,
-  minMaxLabelStyle: any
+  label: string;
+  min: number;
+  max: number;
+  value: number;
+  width: number;
+  height: number;
+  color: string;
+  backgroundColor: string;
+  topLabelStyle: any;
+  valueLabelStyle: any;
+  minMaxLabelStyle: any;
+  valueFormatter: (value:number) => string;
 }
 
 export default class Gauge extends React.Component<GaugeProps> {
@@ -27,7 +27,6 @@ export default class Gauge extends React.Component<GaugeProps> {
     width: 400,
     height: 320,
     color: '#fe0400',
-    symbol: '',
     backgroundColor: "#edebeb",
     topLabelStyle: {
       textAnchor: "middle",
@@ -62,7 +61,8 @@ export default class Gauge extends React.Component<GaugeProps> {
       fontSize: 20,
       lineHeight: 'normal',
       fillOpacity: 1
-    }
+    },
+    valueFormatter: (value:number) => `${value}`
   };
 
   _getPathValues = (value: number) => {
@@ -138,7 +138,7 @@ export default class Gauge extends React.Component<GaugeProps> {
           {this.props.label}
         </text>
         <text x={this.props.width / 2} y={this.props.height / 5 * 4} textAnchor="middle" style={valueLabelStyle}>
-          {this.props.value + this.props.symbol}
+          { this.props.valueFormatter(this.props.value) }
         </text>
         <text x={((Cx - Ro) + (Cx - Ri)) / 2} y={Cy + 25} textAnchor="middle" style={this.props.minMaxLabelStyle}>
           {this.props.min}
