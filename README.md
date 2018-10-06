@@ -9,8 +9,8 @@ Demo
 ![Sample Gauge](https://reggino.github.io/react-svg-gauge/example.png)
 
 https://reggino.github.io/react-svg-gauge
- 
- 
+
+
 Sample implementation
 -----
 
@@ -45,6 +45,7 @@ Options
 - backgroundColor (default: '#edebeb')
 - topLabelStyle (style object)
 - valueLabelStyle (style object)
-- minMaxLabelStyle(style object)
+- minMaxLabelStyle (style object)
+- symbol (e.g. '%')
 
 Styling can be done via `Style`-properties, or by applying CSS to SVG Text elements.
