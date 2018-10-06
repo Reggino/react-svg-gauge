@@ -46,7 +46,7 @@ Options
 - topLabelStyle (style object)
 - valueLabelStyle (style object)
 - minMaxLabelStyle (style object)
-- valueFormatter (function)
+- valueFormatter (function (number) => string)
 
 
 Styling can be done via `Style`-properties, or by applying CSS to SVG Text elements.
