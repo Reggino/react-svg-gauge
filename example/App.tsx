@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
 import Gauge from '../src/Gauge';
 
-function getHexColor(value) {
+function getHexColor(value:number) {
 	let string = value.toString(16);
 	return (string.length === 1) ? '0' + string : string;
 }
 
-export default class App extends Component {
-	constructor() {
-		super();
+interface AppProps {
+
+}
+
+interface AppState {
+  value: number;
+}
+
+export default class App extends Component<AppProps, AppState> {
+	constructor(props:AppProps) {
+		super(props);
 		this.state = {
 			value: 50,
 		}
 	}
 
-	onChange = (e) => {
-		this.setState({ value: parseInt(e.target.value, 10) });
+	onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+		this.setState({ value: parseInt(e.currentTarget.value, 10) });
 	};
 
 	render() {
