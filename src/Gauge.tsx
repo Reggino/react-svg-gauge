@@ -10,6 +10,7 @@ export interface GaugeProps {
   value: number;
   width: number;
   height: number;
+  minMaxLabelsOffset: number;
   color: string;
   backgroundColor: string;
   topLabelStyle: any;
@@ -26,6 +27,7 @@ export default class Gauge extends React.Component<GaugeProps> {
     value: 40,
     width: 400,
     height: 320,
+    minMaxLabelsOffset: 25,
     color: '#fe0400',
     backgroundColor: "#edebeb",
     topLabelStyle: {
@@ -109,6 +111,7 @@ export default class Gauge extends React.Component<GaugeProps> {
     let valueLabelStyle = (this.props.valueLabelStyle.fontSize
       ? this.props.valueLabelStyle
       : { ...this.props.valueLabelStyle, fontSize: (this.props.width / 5) });
+      let {minMaxLabelsOffset} = this.props;
     let { Cx, Ro, Ri, Xo, Cy, Xi } = this._getPathValues(this.props.max);
     if (!this.uniqueFilterId) this.uniqueFilterId = "filter_" + uniqueId++;
     return (
@@ -140,10 +143,10 @@ export default class Gauge extends React.Component<GaugeProps> {
         <text x={this.props.width / 2} y={this.props.height / 5 * 4} textAnchor="middle" style={valueLabelStyle}>
           { this.props.valueFormatter(this.props.value) }
         </text>
-        <text x={((Cx - Ro) + (Cx - Ri)) / 2} y={Cy + 25} textAnchor="middle" style={this.props.minMaxLabelStyle}>
+        <text x={((Cx - Ro) + (Cx - Ri)) / 2} y={Cy + minMaxLabelsOffset} textAnchor="middle" style={this.props.minMaxLabelStyle}>
           {this.props.min}
         </text>
-        <text x={(Xo + Xi) / 2} y={Cy + 25} textAnchor="middle" style={this.props.minMaxLabelStyle}>
+        <text x={(Xo + Xi) / 2} y={Cy + minMaxLabelsOffset} textAnchor="middle" style={this.props.minMaxLabelStyle}>
           {this.props.max}
         </text>
       </svg>
