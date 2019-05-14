@@ -45,7 +45,7 @@ export default class App extends Component<AppProps, AppState> {
               <div className="container">
                 <ul className="nav nav-pills navbar-nav">
                   <li role="presentation" className=""><a
-                    href="https://github.com/reggino/react-svg-gauge/blob/master/example/App.js">Example Source</a></li>
+                    href="https://github.com/reggino/react-svg-gauge/blob/master/example/App.tsx">Example Source</a></li>
                   <li role="presentation" className=""><a href="https://github.com/reggino/react-svg-gauge">Documentation
                     on Github</a></li>
                   <li role="presentation" className=""><a href="https://www.npmjs.com/package/react-svg-gauge">NPM
