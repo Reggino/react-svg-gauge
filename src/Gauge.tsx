@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 //global unique key for every gauge (needed for SVG groups to stay separated)
 let uniqueId = 0;
