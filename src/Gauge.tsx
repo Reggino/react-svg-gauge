@@ -3,7 +3,7 @@ import * as React from "react";
 //global unique key for every gauge (needed for SVG groups to stay separated)
 let uniqueId = 0;
 
-export interface GaugeProps {
+export interface IGaugeProps {
   label: string;
   min: number;
   max: number;
@@ -11,6 +11,8 @@ export interface GaugeProps {
   width: number;
   height: number;
   minMaxLabelsOffset: number;
+  minTxt?: string;
+  maxTxt?: string;
   color: string;
   backgroundColor: string;
   topLabelStyle: any;
@@ -19,8 +21,8 @@ export interface GaugeProps {
   valueFormatter: (value: number) => string;
 }
 
-export default class Gauge extends React.Component<GaugeProps> {
-  static defaultProps = {
+export default class Gauge extends React.Component<IGaugeProps> {
+  static defaultProps: IGaugeProps = {
     label: "React SVG Gauge",
     min: 0,
     max: 100,
@@ -187,7 +189,7 @@ export default class Gauge extends React.Component<GaugeProps> {
           textAnchor="middle"
           style={this.props.minMaxLabelStyle}
         >
-          {this.props.min}
+          {this.props.minTxt || this.props.min}
         </text>
         <text
           x={(Xo + Xi) / 2}
@@ -195,7 +197,7 @@ export default class Gauge extends React.Component<GaugeProps> {
           textAnchor="middle"
           style={this.props.minMaxLabelStyle}
         >
-          {this.props.max}
+          {this.props.maxTxt || this.props.max}
         </text>
       </svg>
     );

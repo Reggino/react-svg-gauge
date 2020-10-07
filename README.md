@@ -38,6 +38,8 @@ Options
 - label (default: "React SVG Gauge")
 - min (default: 0)
 - max (default: 100)
+- minTxt (default: undefined)
+- maxTxt (default: undefined)
 - value (default: 40)
 - width (default: : 400)
 - height (default: 320)
