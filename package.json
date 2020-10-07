@@ -24,22 +24,23 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "eslint": "^5.6.1",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.11.1",
+    "eslint": "^6.8.0",
+    "eslint-config-kingsquare": "^6.0.4",
+    "prettier": "^2.1.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "ts-loader": "^5.2.1",
-    "typescript": "^3.1.1",
+    "typescript": "^3.9.7",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9"
   },
   "peerDependencies": {
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "eslintConfig": {
+    "extends": "kingsquare"
   },
   "scripts": {
     "example": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --mode=development --content-base example/ --config ./example/webpack.example.config.js",
