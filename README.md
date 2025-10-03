@@ -1,7 +1,7 @@
 React SVG Gauge
 =====
 
-Simple SVG Gauge component, inspired by [JustGage](http://JustGage.com)
+Simple SVG Gauge component, inspired by [JustGage](https://github.com/toorshia/justgage)
 
 Demo
 ----
